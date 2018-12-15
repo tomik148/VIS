@@ -9,9 +9,9 @@ namespace VIS
     public partial class Model1 : DbContext
     {
         static Model1 _context;
-        public static Model1 context
+        public static Model1 Context
         {
-            get => _context == null ? _context = new Model1() : _context;
+            get => _context ?? (_context = new Model1());
         }
         public Model1()
             : base("name=Model1")

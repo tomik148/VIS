@@ -25,7 +25,7 @@ namespace VIS.Controllers
         {
             ViewBag.Message = "Your application description page.";
             
-            return View(Model1.context.Orders);
+            return View(Model1.Context.Orders);
         }
 
         public ActionResult Contact()
