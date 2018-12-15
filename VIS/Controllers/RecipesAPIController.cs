@@ -13,44 +13,44 @@ using VIS.Models;
 
 namespace VIS.Controllers
 {
-    public class AddressesController : ApiController
+    public class RecipesAPIController : ApiController
     {
         private Model1 db = new Model1();
 
-        // GET: api/Addresses
-        public IQueryable<Address> GetAddress()
+        // GET: api/Recipes
+        public IQueryable<Recipe> GetRecipes()
         {
-            return db.Address;
+            return db.Recipes;
         }
 
-        // GET: api/Addresses/5
-        [ResponseType(typeof(Address))]
-        public IHttpActionResult GetAddress(int id)
+        // GET: api/Recipes/5
+        [ResponseType(typeof(Recipe))]
+        public IHttpActionResult GetRecipe(int id)
         {
-            Address address = db.Address.Find(id);
-            if (address == null)
+            Recipe recipe = db.Recipes.Find(id);
+            if (recipe == null)
             {
                 return NotFound();
             }
 
-            return Ok(address);
+            return Ok(recipe);
         }
 
-        // PUT: api/Addresses/5
+        // PUT: api/Recipes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAddress(int id, Address address)
+        public IHttpActionResult PutRecipe(int id, Recipe recipe)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != address.id)
+            if (id != recipe.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(address).State = EntityState.Modified;
+            db.Entry(recipe).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace VIS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressExists(id))
+                if (!RecipeExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace VIS.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Addresses
-        [ResponseType(typeof(Address))]
-        public IHttpActionResult PostAddress(Address address)
+        // POST: api/Recipes
+        [ResponseType(typeof(Recipe))]
+        public IHttpActionResult PostRecipe(Recipe recipe)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Address.Add(address);
+            db.Recipes.Add(recipe);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { address.id }, address);
+            return CreatedAtRoute("DefaultApi", new { recipe.id }, recipe);
         }
 
-        // DELETE: api/Addresses/5
-        [ResponseType(typeof(Address))]
-        public IHttpActionResult DeleteAddress(int id)
+        // DELETE: api/Recipes/5
+        [ResponseType(typeof(Recipe))]
+        public IHttpActionResult DeleteRecipe(int id)
         {
-            Address address = db.Address.Find(id);
-            if (address == null)
+            Recipe recipe = db.Recipes.Find(id);
+            if (recipe == null)
             {
                 return NotFound();
             }
 
-            db.Address.Remove(address);
+            db.Recipes.Remove(recipe);
             db.SaveChanges();
 
-            return Ok(address);
+            return Ok(recipe);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace VIS.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AddressExists(int id)
+        private bool RecipeExists(int id)
         {
-            return db.Address.Count(e => e.id == id) > 0;
+            return db.Recipes.Count(e => e.id == id) > 0;
         }
     }
 }

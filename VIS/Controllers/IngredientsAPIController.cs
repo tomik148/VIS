@@ -13,44 +13,44 @@ using VIS.Models;
 
 namespace VIS.Controllers
 {
-    public class RecipesController : ApiController
+    public class IngredientsAPIController : ApiController
     {
         private Model1 db = new Model1();
 
-        // GET: api/Recipes
-        public IQueryable<Recipe> GetRecipes()
+        // GET: api/Ingredients
+        public IQueryable<Ingredient> GetIngredients()
         {
-            return db.Recipes;
+            return db.Ingredients;
         }
 
-        // GET: api/Recipes/5
-        [ResponseType(typeof(Recipe))]
-        public IHttpActionResult GetRecipe(int id)
+        // GET: api/Ingredients/5
+        [ResponseType(typeof(Ingredient))]
+        public IHttpActionResult GetIngredient(int id)
         {
-            Recipe recipe = db.Recipes.Find(id);
-            if (recipe == null)
+            Ingredient ingredient = db.Ingredients.Find(id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return Ok(recipe);
+            return Ok(ingredient);
         }
 
-        // PUT: api/Recipes/5
+        // PUT: api/Ingredients/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRecipe(int id, Recipe recipe)
+        public IHttpActionResult PutIngredient(int id, Ingredient ingredient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != recipe.id)
+            if (id != ingredient.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(recipe).State = EntityState.Modified;
+            db.Entry(ingredient).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace VIS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(id))
+                if (!IngredientExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace VIS.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Recipes
-        [ResponseType(typeof(Recipe))]
-        public IHttpActionResult PostRecipe(Recipe recipe)
+        // POST: api/Ingredients
+        [ResponseType(typeof(Ingredient))]
+        public IHttpActionResult PostIngredient(Ingredient ingredient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Recipes.Add(recipe);
+            db.Ingredients.Add(ingredient);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { recipe.id }, recipe);
+            return CreatedAtRoute("DefaultApi", new { ingredient.id }, ingredient);
         }
 
-        // DELETE: api/Recipes/5
-        [ResponseType(typeof(Recipe))]
-        public IHttpActionResult DeleteRecipe(int id)
+        // DELETE: api/Ingredients/5
+        [ResponseType(typeof(Ingredient))]
+        public IHttpActionResult DeleteIngredient(int id)
         {
-            Recipe recipe = db.Recipes.Find(id);
-            if (recipe == null)
+            Ingredient ingredient = db.Ingredients.Find(id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            db.Recipes.Remove(recipe);
+            db.Ingredients.Remove(ingredient);
             db.SaveChanges();
 
-            return Ok(recipe);
+            return Ok(ingredient);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace VIS.Controllers
             base.Dispose(disposing);
         }
 
-        private bool RecipeExists(int id)
+        private bool IngredientExists(int id)
         {
-            return db.Recipes.Count(e => e.id == id) > 0;
+            return db.Ingredients.Count(e => e.id == id) > 0;
         }
     }
 }

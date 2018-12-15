@@ -13,44 +13,44 @@ using VIS.Models;
 
 namespace VIS.Controllers
 {
-    public class OrdersController : ApiController
+    public class AddressesAPIController : ApiController
     {
         private Model1 db = new Model1();
 
-        // GET: api/Orders
-        public IQueryable<Order> GetOrders()
+        // GET: api/Addresses
+        public IQueryable<Address> GetAddress()
         {
-            return db.Orders;
+            return db.Address;
         }
 
-        // GET: api/Orders/5
-        [ResponseType(typeof(Order))]
-        public IHttpActionResult GetOrder(int id)
+        // GET: api/Addresses/5
+        [ResponseType(typeof(Address))]
+        public IHttpActionResult GetAddress(int id)
         {
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            return Ok(order);
+            return Ok(address);
         }
 
-        // PUT: api/Orders/5
+        // PUT: api/Addresses/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutOrder(int id, Order order)
+        public IHttpActionResult PutAddress(int id, Address address)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != order.id)
+            if (id != address.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(order).State = EntityState.Modified;
+            db.Entry(address).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace VIS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderExists(id))
+                if (!AddressExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace VIS.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Orders
-        [ResponseType(typeof(Order))]
-        public IHttpActionResult PostOrder(Order order)
+        // POST: api/Addresses
+        [ResponseType(typeof(Address))]
+        public IHttpActionResult PostAddress(Address address)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Orders.Add(order);
+            db.Address.Add(address);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { order.id }, order);
+            return CreatedAtRoute("DefaultApi", new { address.id }, address);
         }
 
-        // DELETE: api/Orders/5
-        [ResponseType(typeof(Order))]
-        public IHttpActionResult DeleteOrder(int id)
+        // DELETE: api/Addresses/5
+        [ResponseType(typeof(Address))]
+        public IHttpActionResult DeleteAddress(int id)
         {
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            db.Orders.Remove(order);
+            db.Address.Remove(address);
             db.SaveChanges();
 
-            return Ok(order);
+            return Ok(address);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace VIS.Controllers
             base.Dispose(disposing);
         }
 
-        private bool OrderExists(int id)
+        private bool AddressExists(int id)
         {
-            return db.Orders.Count(e => e.id == id) > 0;
+            return db.Address.Count(e => e.id == id) > 0;
         }
     }
 }

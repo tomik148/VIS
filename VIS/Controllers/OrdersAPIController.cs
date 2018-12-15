@@ -13,44 +13,44 @@ using VIS.Models;
 
 namespace VIS.Controllers
 {
-    public class UsersController : ApiController
+    public class OrdersAPIController : ApiController
     {
         private Model1 db = new Model1();
 
-        // GET: api/Users
-        public IQueryable<User> GetUsers()
+        // GET: api/Orders
+        public IQueryable<Order> GetOrders()
         {
-            return db.Users;
+            return db.Orders;
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        // GET: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult GetOrder(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(order);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Orders/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutOrder(int id, Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.id)
+            if (id != order.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(order).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace VIS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace VIS.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        // POST: api/Orders
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult PostOrder(Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
+            db.Orders.Add(order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
+            return CreatedAtRoute("DefaultApi", new { order.id }, order);
         }
 
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        // DELETE: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult DeleteOrder(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            db.Users.Remove(user);
+            db.Orders.Remove(order);
             db.SaveChanges();
 
-            return Ok(user);
+            return Ok(order);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace VIS.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserExists(int id)
+        private bool OrderExists(int id)
         {
-            return db.Users.Count(e => e.id == id) > 0;
+            return db.Orders.Count(e => e.id == id) > 0;
         }
     }
 }
