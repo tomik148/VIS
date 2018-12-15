@@ -1,5 +1,4 @@
-﻿using DesctopClient.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DesctopClient.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for ListOfIngredientsView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class ListOfIngredientsView : UserControl
     {
-        public MainView()
+        public ListOfIngredientsView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }

@@ -63,19 +63,40 @@
     </ApplicationDefinition>
     <Compile Include="Command.cs" />
     <Compile Include="Models\ActiveRecord.cs" />
+    <Compile Include="ViewModels\AddIngredientViewModel.cs" />
     <Compile Include="ViewModels\AddOrderViewModel.cs" />
+    <Compile Include="ViewModels\AddRecipeViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\DetailOrderViewModel.cs" />
+    <Compile Include="ViewModels\ListOfIngredientsViewModel.cs" />
     <Compile Include="ViewModels\ListOfOrdersViewModel.cs" />
+    <Compile Include="ViewModels\ListOfRecipesViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\AddIngredientView.xaml.cs">
+      <DependentUpon>AddIngredientView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddOrderView.xaml.cs">
       <DependentUpon>AddOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddRecipeView.xaml.cs">
+      <DependentUpon>AddRecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailIngredientView.xaml.cs">
+      <DependentUpon>DetailIngredientView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailOrderView.xaml.cs">
       <DependentUpon>DetailOrderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DetailRecipeView.xaml.cs">
+      <DependentUpon>DetailRecipeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListOfIngredientsView.xaml.cs">
+      <DependentUpon>ListOfIngredientsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListOfOrdersView.xaml.cs">
       <DependentUpon>ListOfOrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListOfRecipesView.xaml.cs">
+      <DependentUpon>ListOfRecipesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -84,7 +105,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddIngredientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddRecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailIngredientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,7 +125,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DetailRecipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListOfIngredientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ListOfOrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListOfRecipesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace DesctopClient.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    class MainViewModel
     {
         public UserControl Content { get; set; }
 
@@ -24,17 +24,22 @@ namespace DesctopClient.ViewModels
             {
                 { "ListOfOrders", new ListOfOrdersView() { DataContext = new ListOfOrdersViewModel() } },
                 { "AddOrder", new AddOrderView() { DataContext = new AddOrderViewModel() } },
-                { "DetailOrder", new DetailOrderView() { DataContext = new DetailOrderViewModel() } },
+                { "ListOfIngredients", new ListOfIngredientsView() { DataContext = new ListOfIngredientsViewModel() } },
+                { "AddIngredient", new AddIngredientView() { DataContext = new AddIngredientViewModel() } },
+                { "ListOfRecipes", new ListOfRecipesView() { DataContext = new ListOfRecipesViewModel() } },
+                { "AddRecipe", new AddRecipeView() { DataContext = new AddRecipeViewModel() } },
             };
 
-
+            ChangeView("ListOfOrders");
             ChangeViewCommand = new Command<string>(ChangeView);
         }
 
 
-        void ChangeView(string nameOfView)
+        async void ChangeView(string nameOfView)
         {
             Content = Views[nameOfView];
+            var a = (BaseViewModel)Content.DataContext;
+            await a.OnOpen();
         }
     }
 }

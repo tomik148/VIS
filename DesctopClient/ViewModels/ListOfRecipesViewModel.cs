@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace DesctopClient.ViewModels
 {
-    class ListOfOrdersViewModel : BaseViewModel
+    class ListOfRecipesViewModel : BaseViewModel
     {
-        public Order[] Orders { get; set; }
+        public Recipe[] Recipes { get; set; }
 
-        public ListOfOrdersViewModel()
+        public ListOfRecipesViewModel()
         {
         }
 
         public override async Task OnOpen()
         {
-            Orders = await new Order().GetAllAsync();
+            Recipes = await new Recipe().GetAllAsync();
         }
     }
 }
+

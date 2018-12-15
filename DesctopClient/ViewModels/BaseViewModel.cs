@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesctopClient.ViewModels
 {
-    class BaseViewModel
+    abstract class BaseViewModel
     {
+        public abstract Task OnOpen();
     }
 }

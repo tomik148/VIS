@@ -33,7 +33,7 @@ namespace DesctopClient.Models
             return result;
         }
 
-        async Task<T> GetByIDAsync(int ID)
+        public async Task<T> GetByIDAsync(int ID)
         {
             T result = default(T);
             HttpResponseMessage response = await client.GetAsync($"api/{name}/{ID}");
@@ -44,7 +44,7 @@ namespace DesctopClient.Models
             return result;
         }
 
-        async Task<T> UpdateByIDAsync(int ID, T newVal)
+        public async Task<T> UpdateByIDAsync(int ID, T newVal)
         {
             T result = default(T);
             HttpResponseMessage response = await client.PutAsJsonAsync($"api/{name}/{ID}", newVal);
@@ -55,7 +55,7 @@ namespace DesctopClient.Models
             return result;
         }
 
-        async Task<T> AddAsync(T newVal)
+        public async Task<T> AddAsync(T newVal)
         {
             T result = default(T);
             HttpResponseMessage response = await client.PostAsJsonAsync($"api/{name}", newVal);
@@ -66,7 +66,7 @@ namespace DesctopClient.Models
             return result;  
         }
 
-        async Task DeleteByIDAsync(int ID)
+        public async Task DeleteByIDAsync(int ID)
         {
             HttpResponseMessage response = await client.DeleteAsync( $"api/{name}/{ID}");
             var a = response.StatusCode;

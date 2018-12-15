@@ -9,16 +9,16 @@ namespace DesctopClient
 {
     public class Command : ICommand     
     {
-        private readonly Action<object> _action;
+        private readonly Action _action;
         private Func<object, bool> _canExecute;
 
-        public Command(Action<object> action, Func<object, bool> canExecute)
+        public Command(Action action, Func<object, bool> canExecute)
         {
             _action = action;
             _canExecute = canExecute;
         }
 
-        public Command(Action<object> action) : this(action, (x) => true){ }
+        public Command(Action action) : this(action, (x) => true){ }
 
 
         public bool CanExecute(object parameter)
@@ -30,7 +30,7 @@ namespace DesctopClient
 
         public void Execute(object parameter)
         {
-            _action(parameter);
+            _action();
         }
     }
 
