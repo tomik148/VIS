@@ -7,6 +7,7 @@ namespace VIS.Models
 {
     public class Address
     {
+        public int id { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int StreetNo { get; set; }

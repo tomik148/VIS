@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VIS.Models;
 
 namespace VIS.Controllers
 {
@@ -23,8 +24,8 @@ namespace VIS.Controllers
         public ActionResult Orders()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            
+            return View(Model1.context.Orders);
         }
 
         public ActionResult Contact()
