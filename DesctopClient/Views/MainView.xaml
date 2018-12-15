@@ -1,0 +1,45 @@
+﻿<Window x:Name="window" x:Class="DesctopClient.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesctopClient.Views"
+        xmlns:viewModels="clr-namespace:DesctopClient.ViewModels"
+        mc:Ignorable="d"
+        DataContext="viewModels:MainViewModel"
+        Title="MainView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="380*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="118*"/>
+                <ColumnDefinition Width="293*"/>
+                <ColumnDefinition Width="381*"/>
+            </Grid.ColumnDefinitions>
+
+            <Menu Grid.Column="2" VerticalContentAlignment="Stretch">
+                <MenuItem Header="Objednávky">
+                    <MenuItem Header="Seznam"/>
+                    <MenuItem Header="Přidat"/>
+                </MenuItem>
+                <MenuItem Header="Recepty">
+                    <MenuItem Header="Seznam"/>
+                    <MenuItem Header="Přidat"/>
+                </MenuItem>
+                <MenuItem Header="Ingredience">
+                    <MenuItem Header="Seznam"/>
+                    <MenuItem Header="Přidat"/>
+                </MenuItem>
+                <MenuItem Header="Nastavení">
+
+                </MenuItem>
+            </Menu>
+            <Image HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Source="https://www.ostrava.avion.cz/-/media/images/b2c/czech-republic/ostrava/prodejny/karlova_pekarna/karlovapekarna_logo.png" />
+        </Grid>
+
+        <ContentPresenter Content="{Binding Content}" Grid.Row="1" Grid.RowSpan="1"/>
+    </Grid>
+</Window>

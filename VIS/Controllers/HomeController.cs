@@ -14,25 +14,26 @@ namespace VIS.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Order()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Orders()
+        [HttpPost]
+        public ActionResult Order(Order order)
         {
-            ViewBag.Message = "Your application description page.";
-            
-            return View(Model1.Context.Orders);
+            if (!ModelState.IsValid)
+            {
+                return View(order);
+            }
+            Model1.Context.Orders.Add(order);
+            Model1.Context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Contact()
+        public ActionResult Recipes()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(Model1.Context.Recipes);
         }
     }
 }

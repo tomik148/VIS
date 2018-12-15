@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DesctopClient
+namespace DesctopClient.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ListOfOrdersView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListOfOrdersView : UserControl
     {
-        public MainWindow()
+        public ListOfOrdersView()
         {
             InitializeComponent();
         }

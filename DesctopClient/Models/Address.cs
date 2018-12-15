@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace DesctopClient.Models
+{
+    public class Address : ActiveRecord<Address>
+    {
+        public Address() : base("AddressesAPI")
+        {
+
+        }
+
+        public int id { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int StreetNo { get; set; }
+        public string Country { get; set; }
+    }
+}
