@@ -7,6 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <ListView HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="780" Margin="10,10,0,0" ItemsSource="{Binding Orders}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}"/>
+                    <GridViewColumn Header="Množství" DisplayMemberBinding="{Binding Recipes.Count}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </UserControl>

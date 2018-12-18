@@ -4,9 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesctopClient.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <GroupBox Header="Objednávka" HorizontalAlignment="Left" Height="356" Margin="33,25,0,0" VerticalAlignment="Top" Width="423" >
+            <Grid Margin="10,0,-2,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="23" Margin="13,56,0,0" ItemsSource="{Binding Recipes}" VerticalAlignment="Top" Width="141"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="13,84,0,0" VerticalAlignment="Top" Width="141"/>
+                <Image HorizontalAlignment="Left" Height="140" Margin="234,14,0,0" VerticalAlignment="Top" Width="156" Source="{Binding SelectedItem.Image, ElementName=comboBox, FallbackValue=https://app.weblocalbusiness.cz/data/default.png}"/>
+                <Button Content="Smazat" HorizontalAlignment="Left" Height="33" Margin="13,291,0,0" VerticalAlignment="Top" Width="58"  Command="{Binding DeleteCommand}"/>
+                <Button Content="Zpět" HorizontalAlignment="Left" Height="33" Margin="76,291,0,0" VerticalAlignment="Top" Width="58"    Command="{Binding BackCommand}"  />
+                <Button Content="Uložit" HorizontalAlignment="Left" Height="33" Margin="139,291,0,0" VerticalAlignment="Top" Width="58" Command="{Binding SaveCommand}"  />
+                <ListView HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="380" Margin="10,159,0,0" ItemsSource="{Binding Order.Recipes}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Jmeno" DisplayMemberBinding="{Binding Name}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="Add" HorizontalAlignment="Left" Margin="159,84,0,0" VerticalAlignment="Top" Width="58" Height="23" Command="{Binding AddRecipeCommand}" CommandParameter="{Binding SelectedItem, ElementName=comboBox}"/>
+            </Grid>
+
+        </GroupBox>
+
     </Grid>
 </UserControl>

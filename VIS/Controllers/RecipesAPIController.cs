@@ -79,9 +79,33 @@ namespace VIS.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             db.Recipes.Add(recipe);
-            db.SaveChanges();
+            db.ChangeTracker.DetectChanges();
+            foreach (var item in db.ChangeTracker.Entries())
+            {
+                if (item.Entity is Ingredient)
+                {
+                    //item.State = EntityState.Unchanged;
+                }
+            }
+
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    //saveFailed = true;
+                    // Update the values of the entity that failed to save from the store
+                    // ex.Entries.Single().Reload();
+                }
+
+            } while (saveFailed);
 
             return CreatedAtRoute("DefaultApi", new { recipe.id }, recipe);
         }

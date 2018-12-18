@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201812150245139_aaa.Designer.cs">
       <DependentUpon>201812150245139_aaa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812181653288_adad.cs" />
+    <Compile Include="Migrations\201812181653288_adad.Designer.cs">
+      <DependentUpon>201812181653288_adad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Models\Address.cs" />
@@ -246,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812150245139_aaa.resx">
       <DependentUpon>201812150245139_aaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812181653288_adad.resx">
+      <DependentUpon>201812181653288_adad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

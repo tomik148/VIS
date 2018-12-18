@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
@@ -18,7 +20,13 @@ namespace DesctopClient.Models
         public string Image { get; set; }
         public bool IsAvailable { get; set; }
         public int Price { get; set; }
-        public virtual List<Ingredient> Ingredients { get; set; }
+        public virtual ObservableCollection<Ingredient> Ingredients { get; set; }
+        [JsonIgnoreAttribute]
         public virtual List<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

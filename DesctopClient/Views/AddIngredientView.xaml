@@ -4,9 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesctopClient.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"  Background="White"
+             d:DesignHeight="450" d:DesignWidth="800" >
     <Grid>
-            
+        <GroupBox Header="Ingredience" HorizontalAlignment="Left" Height="207" Margin="187,110,0,0" VerticalAlignment="Top" Width="416">
+            <Grid Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="411">
+                <Label Content="Jmeno" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="73,14,0,0" TextWrapping="Wrap" Text="{Binding Ingredient.Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="144"/>
+                <Label Content="Kategorie" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="73,42,0,0" TextWrapping="Wrap" Text="{Binding Ingredient.Category, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="144"/>
+                <Label Content="Obrázek" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="73,70,0,0" TextWrapping="Wrap" Text="{Binding Ingredient.Image, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="144"/>
+                <Label Content="Množství" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="73,98,0,0" TextWrapping="Wrap" Text="{Binding Ingredient.Amount, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="144"/>
+                <Image HorizontalAlignment="Left" Height="140" Margin="234,14,0,0" VerticalAlignment="Top" Width="156" Source="{Binding Text, ElementName=textBox, FallbackValue=https://app.weblocalbusiness.cz/data/default.png}"/>
+                <Button Content="Smazat" HorizontalAlignment="Left" Height="33" Margin="21,145,0,0" VerticalAlignment="Top" Width="58"  Command="{Binding DeleteCommand}"/>
+                <Button Content="Zpět" HorizontalAlignment="Left" Height="33" Margin="84,145,0,0" VerticalAlignment="Top" Width="58"    Command="{Binding BackCommand}"  />
+                <Button Content="Uložit" HorizontalAlignment="Left" Height="33" Margin="147,145,0,0" VerticalAlignment="Top" Width="58" Command="{Binding SaveCommand}"  />
+            </Grid>
+
+        </GroupBox>
+
     </Grid>
 </UserControl>

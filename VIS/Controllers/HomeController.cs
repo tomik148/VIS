@@ -16,6 +16,7 @@ namespace VIS.Controllers
 
         public ActionResult Order()
         {
+            ViewBag.Recipes = Model1.Context.Recipes;
             return View();
         }
 

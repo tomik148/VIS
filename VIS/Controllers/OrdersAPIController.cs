@@ -81,7 +81,33 @@ namespace VIS.Controllers
             }
 
             db.Orders.Add(order);
-            db.SaveChanges();
+            db.ChangeTracker.DetectChanges();
+            foreach (var item in db.ChangeTracker.Entries())
+            {
+                if (!(item.Entity is Order))
+                {
+                    item.State = EntityState.Unchanged;
+                }
+            }
+
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    saveFailed = true;
+
+                    // Update the values of the entity that failed to save from the store
+                    ex.Entries.Single().Reload();
+                }
+
+            } while (saveFailed);
 
             return CreatedAtRoute("DefaultApi", new { order.id }, order);
         }

@@ -16,7 +16,7 @@ namespace VIS
         public Model1()
             : base("name=Model1")
         {
-
+            
         }
         public DbSet<Address> Address { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -26,6 +26,13 @@ namespace VIS
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+
         }
     }
 }

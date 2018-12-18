@@ -9,15 +9,22 @@ namespace DesctopClient.ViewModels
 {
     class ListOfIngredientsViewModel : BaseViewModel
     {
-        public Ingredient[] Ingredients { get; set; }
+        private Ingredient[] _ingredients;
+
+        public Ingredient[] Ingredients { get => _ingredients; set => OnPropertyChanged(ref _ingredients, value); }
 
         public ListOfIngredientsViewModel()
         {
         }
 
-        public override async Task OnOpen()
+        public override async Task OnOpenAsync()
         {
             Ingredients = await new Ingredient().GetAllAsync();
+        }
+
+        public override Task OnOpenAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

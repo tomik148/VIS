@@ -2,7 +2,9 @@
 using DesctopClient.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -10,13 +12,18 @@ using System.Windows.Input;
 
 namespace DesctopClient.ViewModels
 {
-    class MainViewModel
+    class MainViewModel : INotifyPropertyChanged
     {
-        public UserControl Content { get; set; }
+        public UserControl Content { get => _content; set => OnPropertyChanged(ref _content, value); }
 
         public ICommand ChangeViewCommand { get; set; }
 
         static Dictionary<string, UserControl> Views;
+        private UserControl _content;
+
+        static public MainViewModel instance;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainViewModel()
         {
@@ -32,14 +39,21 @@ namespace DesctopClient.ViewModels
 
             ChangeView("ListOfOrders");
             ChangeViewCommand = new Command<string>(ChangeView);
+            instance = this;
         }
 
 
-        async void ChangeView(string nameOfView)
+        async public void ChangeView(string nameOfView)
         {
             Content = Views[nameOfView];
             var a = (BaseViewModel)Content.DataContext;
-            await a.OnOpen();
+            await a.OnOpenAsync();
+        }
+
+        protected void OnPropertyChanged<T>(ref T target, T val, [CallerMemberName]string PropertyName = "")
+        {
+            target = val;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
     }
 }
